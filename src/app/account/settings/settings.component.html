@@ -1,0 +1,100 @@
+<div class="user-details">
+  <div class="change-user">
+    <h2>Persoonlijke gegevens</h2>
+    <form [formGroup]="userForm" (submit)="submitUser()">
+      <div class="details-name">
+        <div class="row">
+          <label >Voornaam</label>
+          <input
+            type="text"
+            id="firstname"
+            class="input-text"
+            formControlName="firstname">
+        </div>
+        <div class="row middel">
+          <label >Tussenvoegsel</label>
+          <input
+            type="text"
+            id="middelname"
+            formControlName="middelname"
+            class="input-text">
+        </div>
+        <div class="row">
+          <label >Achternaam</label>
+          <input
+            type="text"
+            id="lastname"
+            formControlName="lastname"
+            class="input-text">
+        </div>
+      </div>
+      <div class="details-adres">
+        <div class="col">
+          <div class="row-check">
+            Land
+            <input
+              type="radio"
+              id="country-1"
+              formControlName="country"
+              value="Nederland">Nederland
+            <input
+              type="radio"
+              id="country-2"
+              formControlName="country"
+              value="Belgie">Belgie
+          </div>
+        </div>
+        <div class="col-street">
+          <div class="row">
+            <label >Straatnaam</label>
+            <input
+              type="text"
+              id="street"
+              formControlName="street"
+              class="input-text">
+          </div>
+          <div class="row">
+            <label >Huisnummer</label>
+            <input
+              type="text"
+              id="streetNumber"
+              formControlName="streetNumber"
+              class="input-text">
+          </div>
+        </div>
+        <div class="col-street">
+          <div class="row">
+            <label >Postcode</label>
+            <input
+              type="text"
+              id="postalCode"
+              formControlName="postalCode"
+              class="input-text">
+          </div>
+          <div class="row">
+            <label >Plaats</label>
+            <input
+              type="text"
+              id="city"
+              formControlName="city"
+              class="input-text">
+          </div>
+        </div>
+      </div>
+      <div class="details-account">
+        <div class="col">
+          <div class="row">
+            <label >E-mailadres</label>
+            <input
+              type="email"
+              formControlName="email"
+              class="input-text">
+          </div>
+        </div>
+      </div>
+      <div class="update">
+        <button type="submit" [disabled]="!userForm.valid">Update gegevens</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+@import "src/styles";
+.container{
+  display: flex;
+  margin-top: 5vh;
+  justify-content: center;
+}
+
+.options{
+  color: white;
+  float: left;
+  display: block;
+  height: 90vh;
+  background-color: $normal-red;
+  margin: 0;
+  overflow: hidden;
+  ul {
+    li {
+      list-style: none;
+
+      a {
+        @include a-link();
+        margin: 0;
+        color: white;
+        background-color: $normal-red;
+
+        &:hover {
+        }
+      }
+    }
+  }
+}
+.active{
+  background-color: $red !important;
+}

@@ -1,0 +1,76 @@
+<div class="alert" [ngClass]="{'hidden' : !addMessage}" >
+  <h3>Het product is toegevoegd</h3>
+</div>
+<div class="products">
+  <div class="product-filter">
+    <div class="filter-check">
+      <label class="check-container">
+        Rood
+        <input
+          type="checkbox"
+          value="Rood"
+          [formControl]="catogory"
+          id="Rood"
+          name="catogorie"
+          (change)="isChecked($event)">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+    <div class="filter-check">
+      <label class="check-container">
+        Champange
+        <input
+          class="checkmark"
+          type="checkbox"
+          value="Champange"
+          [formControl]="catogory"
+          name="catogorie"
+          id="Champange"
+          (change)="isChecked($event)">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+    <div class="filter-check">
+      <label class="check-container">
+        Wit
+        <input
+          class="checkmark"
+          type="checkbox"
+          value="Wit"
+          [formControl]="catogory"
+          name="catogorie"
+          id="White"
+          (change)="isChecked($event)">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+    <div class="filter-check">
+      <label class="check-container">
+        Rose
+        <input
+          class="checkmark"
+          type="checkbox"
+          value="Rose"
+          [formControl]="catogory"
+          name="catogorie"
+          id="Rose"
+          (change)="isChecked($event)">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+  </div>
+  <div class="product-items">
+    <div class="product-card" *ngFor="let product of products"  [attr.data-catogory]="[product.catogory]">
+      <div class="card-image">
+        <img src="{{imageUrl}}{{product.filename}}" alt="{{product.name}}">
+      </div>
+      <div class="card-info" >
+        <h2>{{product.name}}</h2>
+        <p>&euro; {{product.price}}</p>
+        <button (click)="addItemToCart(product)" > Bestel <i-feather name="shopping-cart"></i-feather></button>
+      </div>
+    </div>
+
+  </div>
+
+</div>

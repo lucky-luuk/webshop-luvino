@@ -1,0 +1,18 @@
+<div class="cart-row">
+    <div class="image">
+      <img src="{{imageUrl}}{{item.product.filename}}" alt="{{item.product.name}}">
+    </div>
+    <div class="item-name">
+      <h2>{{item.product.name}}</h2>
+    </div>
+    <div class="amount">
+      <button class="btn" (click)="updateAmount(item.amount +1)">+</button>
+      <div class="count">{{item.amount}}</div>
+      <button class="btn" (click)="updateAmount(item.amount -1)">-</button>
+    </div>
+    <div class="item-price">
+      <p>&euro; {{(item.product.price * item.amount).toFixed(2)}}</p>
+      <button class="btn-delete" type="button" (click)="deleteItem()">X</button>
+    </div>
+</div>
+

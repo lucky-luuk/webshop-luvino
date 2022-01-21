@@ -1,0 +1,97 @@
+@import "src/styles";
+.center{
+  margin-top: 5%;
+  .ajust-content {
+    background-color: $beige;
+
+    .input {
+      padding: 30px;
+      width: 100%;
+
+      form {
+        display: flex;
+        flex-direction: column;
+        //justify-content: space-between;
+        gap: 2em;
+        .ng-invalid, .ng-touched{
+          border: 1px solid red;
+        }
+        .input-text {
+          padding: 13px;
+          background-color: #fafafa;
+          border: 0;
+          box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+          transition: .3s box-shadow;
+        }
+        .input-text.ng-invalid.ng-touched,
+        textarea.ng-invalid.ng-touched{
+          border: 2px solid red;
+        }
+
+        .details-name {
+          display: flex;
+          gap: 1.5em;
+
+          .row {
+            display: flex;
+            flex-direction: column;
+          }
+
+          .middel {
+            width: 30%;
+          }
+        }
+
+        .email-col, .password-col {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5em;
+        }
+
+        .password-col {
+
+        }
+
+        .adres-col, {
+          display: flex;
+          flex-direction: column;
+          gap: 2em;
+
+          .col-street {
+            display: flex;
+            gap: 2em;
+
+          }
+        }
+
+        .postal-code {
+          display: flex;
+          gap: 2em;
+
+        }
+
+        button {
+          @include button();
+          background-color: $red;
+        }
+        button[disabled] {
+          background-color: gray;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+@media (max-width: 700px) {
+  .input{
+    padding: 5px!important;
+  }
+  form{
+    flex-direction: column;
+  }
+}
+

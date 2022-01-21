@@ -1,0 +1,13 @@
+<div>
+  <div class="overview-container">
+    <div class="overview-header">
+      <div class="header-row">
+        Status
+      </div>
+      <div class="header-row">
+        Bestel datum
+      </div>
+    </div>
+    <app-order-admin-item *ngFor="let order of orders" [item]="order" [routerLink]="['/admin', order.id, 'detais']"></app-order-admin-item>
+  </div>
+</div>

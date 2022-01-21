@@ -1,0 +1,13 @@
+
+
+<div class="options col" *ngIf="user">
+  <ul>
+    <li><a [routerLink]="['instellingen']" routerLinkActive="active">Instellingen</a></li>
+    <li><a [routerLink]="['orders']" routerLinkActive="active">Orders</a></li>
+  </ul>
+</div>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+

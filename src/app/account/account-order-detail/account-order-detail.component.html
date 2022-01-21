@@ -1,0 +1,46 @@
+<div class="details-container">
+  <div class="order-overview" *ngIf="order">
+    <div class="col">
+      <div class="row">
+        Aanmaak datum:
+      </div>
+      <div class="row">
+        {{order.dateCreated}}
+      </div>
+    </div>
+    <div class="col">
+      <div class="row">
+        <label>Status</label>
+      </div>
+      <div class="row">
+        {{order.status}}
+      </div>
+    </div>
+  </div>
+  <div class="item-overview" >
+    <div class="item" *ngFor="let item of items">
+      <div class="image">
+        <img src="{{imageUrl}}{{item.product.filename}}" alt="{{item.product.filename}}">
+      </div>
+      <div class="text">
+        <div class="col">
+          <div class="row">
+            Aantal
+          </div>
+          <div class="row">
+            {{item.amount}}
+          </div>
+        </div>
+        <div class="col">
+          <div class="row">
+            Product
+          </div>
+          <div class="row">
+            {{item.product.name}}
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+

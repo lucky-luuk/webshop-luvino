@@ -1,0 +1,58 @@
+@import "src/styles";
+.details-container{
+  display: flex;
+  gap: 1.2em;
+  .order-overview{
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    gap: 1.2em;
+  }
+  .item-overview{
+    display: flex;
+    gap: 1.2em;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 500px;
+    overflow: auto;
+    .item{
+      padding: 1.2em;
+      background-color: white;
+    }
+    .item-row{
+      font-size: 1.2em;
+    }
+  }
+}
+.col{
+  display: flex;
+  justify-content: space-around;
+  padding: 1.2em;
+  gap: 1.2em;
+  font-size: 1.2em;
+  .select{
+    select{
+      -webkit-appearance: none;
+      padding: 7px 40px 7px 12px;
+      width: 100%;
+      border: 1px solid #E8EAED;
+      border-radius: 5px;
+      background: white;
+      box-shadow: 0 1px 3px -2px #9098A9;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 16px;
+      transition: all 150ms ease;
+    }
+  }
+}
+.row{
+  width: 50%;
+  button {
+    @include button();
+    background-color: $red;
+  }
+  mat-form-field{
+    color: $black;
+  }
+}

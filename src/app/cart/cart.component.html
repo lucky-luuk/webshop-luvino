@@ -1,0 +1,25 @@
+<div class="shopping-cart">
+  <div class="shopping-header">
+    <h1>Winkelwagen</h1>
+  </div>
+  <div class="cart">
+    <div class="cart-info">
+      <div>
+        <h2>Totaalprijs &euro;{{(totalPrice).toFixed(2)}}</h2>
+      </div>
+      <button type="button" *ngIf="isLoggedin" [disabled]="!isLoggedin" (click)="toCheckout()" >Naar de kassa</button>
+      <button type="button" *ngIf="!isLoggedin" (click)="toCheckout()" >Login of maak een account</button>
+    </div>
+    <div class="cart-box">
+        <app-cart-item
+          *ngFor="let item of items; let i = index"
+          [item]="item"
+          (updated)="updated($event)"
+        ></app-cart-item>
+    </div>
+  </div>
+
+</div>
+
+
+

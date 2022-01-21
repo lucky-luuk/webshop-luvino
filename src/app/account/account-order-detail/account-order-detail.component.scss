@@ -1,0 +1,43 @@
+@import "src/styles";
+.details-container{
+  display: flex;
+  gap: 1.2em;
+  .order-overview{
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    gap: 1.2em;
+  }
+  .item-overview{
+    display: flex;
+    gap: 1.2em;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 500px;
+    overflow: auto;
+    .item{
+      padding: 1.2em;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      .image{
+        img{
+          max-height: 150px;
+        }
+      }
+    }
+    .item-row{
+      font-size: 1.2em;
+    }
+  }
+}
+.col{
+  display: flex;
+  justify-content: space-around;
+  padding: 1.2em;
+  gap: 1.2em;
+  font-size: 1.2em;
+}
+.row{
+  width: 50%;
+}

@@ -1,0 +1,64 @@
+
+<div class="container">
+  <div class="order">
+    <div class="shopping-cart order-item" *ngFor="let item of items; let i = index">
+      <app-cart-item
+        [item]="item">
+      </app-cart-item>
+    </div>
+  </div>
+  <div class="details">
+    <h2>Bestel informatie</h2>
+    <div class="adres" >
+      <table *ngIf="user.address">
+        <tr>
+          <td>{{(user.firstname + ' ' + user.lastname)}}</td>
+        </tr>
+        <tr>
+          <td>Straat</td>
+          <td>{{user.address.street}}</td>
+        </tr>
+        <tr>
+          <td>Postcode</td>
+          <td>{{user.address.postalCode}}</td>
+        </tr>
+        <tr>
+          <td>Land</td>
+          <td>{{user.address.country}}</td>
+        </tr>
+        <tr>
+          <td>Stad</td>
+          <td>{{user.address.city}}</td>
+        </tr>
+      </table>
+    </div>
+    <button (click)="changeSettings()">Adress veranderen</button>
+    <div class="payment">
+      <p>Kies uit de volgende betaal middelen</p>
+    </div>
+    <div class="total">
+      <table>
+        <tr>
+          <td>Subtotaal:</td>
+          <td>&euro;{{totalPrice.toFixed(2)}}</td>
+        </tr>
+        <tr>
+          <td>Verzendkosten:</td>
+          <td>&euro;{{shipping}}</td>
+        </tr>
+        <tr>
+          <td>Totaal:</td>
+          <td>&euro;{{total.toFixed(2)}}</td>
+        </tr>
+      </table>
+    </div>
+    <button (click)="placeOrder()">Plaats bestelling</button>
+  </div>
+</div>
+<div *ngIf="showPopup" class="pop-up">
+  <div class="popup-content">
+    Je order is geplaatst. Wanneer je dit bericht weg klikt wordt je naar het overzicht gebracht.
+    <span class="close" (click)="closePopup()">x</span>
+  </div>
+</div>
+

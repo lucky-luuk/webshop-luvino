@@ -1,0 +1,83 @@
+@import "src/styles";
+
+.center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+.ajust-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: $beige;
+  h1, p{
+    color: white;
+  }
+  .input{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1em;
+    padding: 40px;
+    //padding: 0px 5em;
+    .error{
+      background-color: $normal-red;
+      padding: 30px;
+      width: 40%;
+      margin: 0 auto;
+    }
+    .login-col {
+      display: flex;
+      flex-direction: column;
+      gap: 2em;
+      .button-element{
+        display: flex;
+        flex-direction: row !important;
+        gap: 1.5em;
+        justify-content: space-between;
+      }
+      .input-element{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        button{
+          @include button;
+          background-color: $red;
+          width: 50%;
+          font-weight: 400;
+        }
+        .input-text {
+          padding: 13px;
+          background-color: #fafafa;
+          border:0;
+          box-shadow:0 0 4px rgba(0,0,0,0.3);
+          transition: .3s box-shadow;
+          &:focus{
+            border-bottom: 3px solid $red;
+            outline: none;
+
+          }
+        }
+      }
+    }
+
+
+  }
+  .image{
+    height: 100%;
+    img{
+      max-width: 400px;
+    }
+  }
+  @media (max-width: 700px) {
+    img{
+      display: none;
+    }
+
+  }
+}
+

@@ -1,0 +1,46 @@
+<div class="center">
+  <div class="ajust-content">
+    <div class="input">
+      <div class="error" *ngIf="error">
+        <p >Oeps er er lijkt iets niet goed te gaan. Probeer het nog een keer</p>
+      </div>
+      <h1>Login</h1>
+      <p>Log in om uw bestelling af te ronden</p>
+      <form #form='ngForm' (ngSubmit)="onSubmit(form)">
+        <div class="login-col">
+          <div class="input-element">
+            <input
+              type="text"
+              id="email"
+              class="input-text"
+              placeholder="Email adres"
+              ngModel
+              name="email"
+              required
+            >
+          </div>
+          <div class="input-element">
+            <input
+              type="password"
+              class="input-text"
+              placeholder="Wachtwoord"
+              id="password"
+              required
+              name="password"
+              ngModel
+              minlength="4"
+            >
+          </div>
+          <div class="input-element button-element">
+            <button type="submit">Login</button>
+            <button type="button" (click)="register()">Registreer</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="image">
+      <img src="assets/image/dark-red.jpg" alt="dark red wine and bottle">
+    </div>
+  </div>
+
+</div>

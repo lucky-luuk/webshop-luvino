@@ -1,0 +1,156 @@
+@import "src/styles";
+.alert{
+  position: fixed;
+  z-index: 5000;
+  top: 100px;
+  right: 100px;
+  width: 300px;
+  padding: 40px;
+  background-color: green;
+  display: block;
+  color: white;
+  transition: all 2s linear;
+}
+.hidden {
+  display: none;
+  opacity: 0;
+}
+.products{
+  display: flex;
+  margin-top: 3%;
+
+  .product-filter{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    float: left;
+    margin: 0 3%;
+    padding: 3%;
+    gap: 1em;
+    background-color: $beige;
+    height: 30%;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.19);
+    .filter-check {
+      padding: 5px;
+      display: flex;
+      gap: 2em;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 15px;
+      .check-container{
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        input {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+          height: 0;
+          width: 0;
+        }
+        .checkmark{
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 25px;
+          width: 25px;
+          background-color: #eee;
+          &:after {
+            content: "";
+            position: absolute;
+            display: none;
+          }
+        }
+        &:hover input ~ .checkmark{
+          background-color: #ccc;
+        }
+        & input:checked ~ .checkmark{
+          background-color: $red;
+        }
+        & input:checked ~ .checkmark:after{
+          display: block;
+        }
+        & .checkmark:after {
+          left: 9px;
+          top: 5px;
+          width: 5px;
+          height: 10px;
+          border: solid white;
+          border-width: 0 3px 3px 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
+  .product-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 80%;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 50%;
+    .product-card {
+      padding: 2%;
+      //flex-grow: 1;
+      min-width: 200px;
+      max-width: 250px;
+      flex-basis: 23%;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.19);
+      background-color: white;
+      justify-content: space-between;
+      .card-info{
+
+        display: flex;
+        flex-direction: column;
+        gap: 1.3em;
+        button {
+          @include button();
+          padding: 10px;
+          background-color: $normal-red;
+          color: white;
+          cursor: pointer;
+          border: 0;
+          font-weight: bold;
+          &:hover {
+            background-color: $red;
+          }
+        }
+      }
+
+      .card-image {
+        display: flex;
+        justify-content: center;
+
+        img {
+          height: 200px;
+
+        }
+      }
+    }
+  }
+}
+@media (max-width: 700px) {
+    .products{
+      flex-direction: column !important;
+    }
+    .product-filter{
+      position: unset !important;
+      margin-bottom: 10px !important;
+    }
+    .product-card {
+      flex: 1 40%;
+    }
+}
+
+

@@ -1,0 +1,107 @@
+<div class="product-container">
+  <form [formGroup]="productForm"  (ngSubmit)="onSubmit()">
+    <div class="form-items">
+      <div class="row">
+        <label>Naam</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          formControlName="name">
+      </div>
+      <div class="row">
+        <label>Prijs</label>
+        <input
+          type="number"
+          min="0.00"
+          max="10000.00"
+          step="0.01"
+          id="price"
+          class="form-control"
+          formControlName="price">
+      </div>
+      <div class="row">
+        <label>Catogorie</label>
+        <select
+          name="select_catogory"
+          id="select_catogory"
+          formControlName="catogory">
+          <option selected disabled>Kies een catogorie</option>
+          <option value="Wit">Wit</option>
+          <option value="Rood">Rood</option>
+          <option value="Rose">Rose</option>
+          <option value="Champange">Champange</option>
+        </select>
+      </div>
+      <div class="row">
+        <label>Druif</label>
+        <input
+          type="text"
+          id="grape"
+          class="form-control"
+          formControlName="grape">
+      </div>
+      <div class="row">
+        <label>Land</label>
+        <input
+          type="text"
+          id="country"
+          class="form-control"
+          formControlName="country">
+      </div>
+      <div class="row">
+        <label>Jaar</label>
+        <input
+          type="text"
+          id="year"
+          class="form-control"
+          formControlName="year">
+      </div>
+      <div class="row">
+        <label>Huis</label>
+        <input
+          type="text"
+          id="house"
+          class="form-control"
+          formControlName="house">
+      </div>
+      <div class="row">
+        <div class="upload-image" >
+          <input
+            type="file"
+            name="product-image"
+            class="file-input"
+            id="file-input"
+            required
+            (change)="onFileChange($event)"
+          >
+          <label for="file-input">Upload foto</label>
+        </div>
+        <div class="row btn-row">
+          <button type="submit" class="btn-save" [disabled]="!productForm.valid">Opslaan</button>
+          <button class="btn-cancel" type="button" (click)="cancel()">Cancel</button>
+          <button class="btn-cancel" (click)="deleteProduct()" type="button" *ngIf="editMode">Verwijder</button>
+          <app-popup *ngIf="delete" [message]="'Het product is verwijderd'"></app-popup>
+          <app-popup *ngIf="add" [message]="'Het product succesvol toegevoegd.'"></app-popup>
+        </div>
+      </div>
+    </div>
+    <div class="sideBox">
+      <div class="image" *ngIf="imageName">
+        <img src="{{imageUrl}}{{imageName}}" alt="product foto">
+      </div>
+      <div class="des-row">
+          <label>Omschrijving</label>
+          <textarea
+            id="description"
+            placeholder="Beschrijving"
+            formControlName="description"
+            rows="15"
+            cols="50"
+            spellcheck="false"
+            required></textarea>
+      </div>
+    </div>
+  </form>
+</div>
+

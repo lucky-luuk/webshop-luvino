@@ -1,1 +1,71 @@
-/* You can add global styles to this file, and also import other style files */
+$red: #461111;
+$normal-red: #86131b;
+$light-red: #F05A5B;
+$gray: #E2DEDE;
+$black: #040303;
+$white: #FBF9FA;
+$beige: #D3AE94;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap');
+
+body{
+  margin: 0;
+  height: 100%;
+  background-color: #f2f2f2;
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+@mixin a-link() {
+  margin: 0 10px;
+  padding: 15px;
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  color: $gray;
+}
+
+@mixin button() {
+  background-color: $red;
+  border: none;
+  color: $gray;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  padding: 5%;
+  transition: all 0.3s;
+  &:hover{
+    background-color: $normal-red;
+    color: white;
+  }
+}
+
+.overview-container{
+  display: flex;
+  overflow-x: hidden;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  margin: 0;
+  width: 800px;
+  max-height: 500px;
+  font-weight: 500;
+  font-size: 1em;
+  .overview-header{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid $gray ;
+    .header-row{
+      width: 40%;
+      padding: 20px;
+      font-size: 1.2em;
+    }
+  }
+
+}
+

@@ -1,0 +1,133 @@
+<div class="center">
+  <div class="ajust-content">
+    <div class="input">
+      <h1>Registreer</h1>
+      <p>Om producten te bestellen moet u een account aan maken.
+        <br>Vul de onderstaande gegevens in.</p>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="details-name">
+            <div class="row">
+              <input
+                type="text"
+                formControlName="firstname"
+                class="input-text"
+                placeholder="Voornaam"
+                id="firstname"
+                required
+              >
+            </div>
+            <div class="row middle">
+              <input
+                type="text"
+                class="input-text"
+                placeholder="Tussenvoegsel"
+                id="middelname"
+              >
+            </div>
+            <div class="row">
+              <input
+                type="text"
+                formControlName="lastname"
+                class="input-text"
+                placeholder="Achternaam"
+                id="lastname"
+                required
+              >
+            </div>
+          </div>
+        <div class="email-col">
+          <div class="col">
+            <input
+              type="email"
+              class="input-text"
+              id="email"
+              email
+              formControlName="email"
+              placeholder="Email adres"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="password-col">
+          <span>
+            <p>Minimaal 6 tekens</p>
+          </span>
+          <div class="row">
+            <input
+              type="password"
+              class="input-text"
+              formControlName="password"
+              placeholder="Wachtwoord"
+              id="password"
+              required
+            >
+          </div>
+        </div>
+        <div class="adres-col">
+          <div class="col">
+            <div class="row-check">
+              Land
+              <input
+                type="radio"
+                id="country-1"
+                formControlName="country"
+                value="Nederland">Nederland
+              <input
+                type="radio"
+                id="country-2"
+                formControlName="country"
+                value="Belgie">Belgie
+            </div>
+          </div>
+          <div class="col-street">
+            <div class="row">
+              <input
+                type="text"
+                class="input-text"
+                formControlName="street"
+                id="street"
+                placeholder="Straatnaam"
+                required
+              >
+            </div>
+            <div class="row">
+              <input
+                type="text"
+                class="input-text"
+                formControlName="streetNumber"
+                id="streetNumber"
+                placeholder="Huisnummer"
+                required
+              >
+            </div>
+          </div>
+        </div>
+        <div class="postal-code">
+          <div class="row">
+            <input
+              type="text"
+              class="input-text"
+              formControlName="postalCode"
+              placeholder="Postcode"
+              id="postalCode"
+              required
+            >
+          </div>
+          <div class="row">
+            <input
+              type="text"
+              class="input-text"
+              formControlName="city"
+              placeholder="Stad"
+              id="city"
+              required
+            >
+          </div>
+        </div>
+        <button type="submit" [disabled]="!registerForm.valid">Registreer</button>
+      </form>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,16 @@
+<div>
+  <div class="overview-container">
+    <div class="overview-header">
+      <div class="header-row">
+        Naam
+      </div>
+      <div class="header-row">
+        Prijs
+      </div>
+      <div class="header-row">
+        Catogorie
+      </div>
+    </div>
+      <app-product-item *ngFor="let product of products" [item]="product" [routerLink]="['/admin', product.id, 'edit']"></app-product-item>
+  </div>
+</div>

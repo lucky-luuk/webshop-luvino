@@ -1,0 +1,63 @@
+<div class="home-top">
+  <div class="content">
+    <h3>Stevig rood tot zacht wit</h3>
+    <h1>Taste of wine</h1>
+    <button routerLink="/producten">Shop now</button>
+  </div>
+</div>
+<div class="home-middle">
+  <div class="selection-col">
+    <div class="text">
+      <h1>Rode wijn</h1>
+      <a routerLink="/producten">Bekijk alle rode wijnen    <span class="material-icons">arrow_forward_ios</span></a>
+    </div>
+    <div class="image">
+      <img src="{{imageUrl}}arrogant.png" alt="wijn">
+    </div>
+  </div>
+  <div class="selection-col">
+    <div class="text">
+      <h1>Champagne</h1>
+      <a routerLink="/producten">Bekijk alle Champagne    <span class="material-icons">arrow_forward_ios</span></a>
+    </div>
+    <div class="image">
+      <img src="{{imageUrl}}de_saint.png" alt="wijn">
+    </div>
+  </div>
+  <div class="selection-col">
+    <div class="text">
+      <h1>Rosé</h1>
+      <a routerLink="/producten">Bekijk alle Rosé <span class="material-icons">arrow_forward_ios</span></a>
+    </div>
+    <div class="image">
+      <img src="{{imageUrl}}lavis.png" alt="wijn">
+    </div>
+  </div>
+  <div class="selection-col">
+    <div class="text">
+      <h1>Witte wijn</h1>
+      <a routerLink="/producten">Bekijk alle witte wijn <span class="material-icons">arrow_forward_ios</span></a>
+    </div>
+    <div class="image">
+      <img src="{{imageUrl}}clearwater_sauvignon.png" alt="wijn">
+    </div>
+  </div>
+</div>
+<div class="product-selection">
+  <div class="products">
+    <div class="product" *ngFor="let product of products">
+      <div class="image">
+        <img src="{{imageUrl}}{{product.filename}}" alt="wijn">
+      </div>
+      <div class="bottom-text">
+        <div class="text">
+          <p>{{product.name}}</p>
+          <p>{{product.price}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <h3>Made with love by Luuk</h3>
+</footer>

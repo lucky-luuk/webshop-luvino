@@ -1,0 +1,111 @@
+@import "src/styles";
+.product-container, form {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  max-height: 700px;
+  background-color: $white;
+  .sideBox{
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.3em;
+    .image{
+      img{
+        max-height: 300px;
+      }
+    }
+    .des-row {
+      display: flex;
+      flex-direction: column;
+      textarea{
+        outline: none;
+        resize: none;
+      }
+    }
+  }
+  .form-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    padding: 20px;
+    background-color: $white;
+    .row {
+      width: 100%;
+      gap: 2em;
+      .form-control {
+        width: 100%;
+        height: 34px;
+        padding: 6px 0px;
+        font-size: 14px;
+        color: #555;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+      }
+      .form-control.ng-invalid.ng-touched,
+      textarea.ng-invalid.ng-touched{
+        border: 2px solid red;
+      }
+
+      [type="file"] {
+        height: 0;
+        overflow: hidden;
+        width: 0;
+
+        + label {
+          background: $red;
+          border: none;
+          border-radius: 5px;
+          color: #fff;
+          cursor: pointer;
+          display: inline-block;
+          font-size: inherit;
+          font-weight: 500;
+          margin-bottom: 1rem;
+          outline: none;
+          padding: 1rem 50px;
+          position: relative;
+          transition: all 0.3s;
+          vertical-align: middle;
+        }
+
+        &:focus + label,
+        + label:hover {
+          // File upload hover state button styles
+          background-color: $normal-red;
+        }
+      }
+    }
+    .btn-row{
+      display: flex;
+      gap: 2em;
+      flex-direction: column;
+      button{
+        @include button();
+        color: #fff;
+        &:hover{
+          background-color: $normal-red;
+        }
+      }
+      button[disabled] {
+        cursor: default;
+        background-color: $gray;
+      }
+      .btn-save{
+        background-color: $red;
+      }
+      .btn-cancel{
+        background-color: $red;
+      }
+    }
+  }
+  .current-image{
+    background-color: $white;
+  }
+}
+

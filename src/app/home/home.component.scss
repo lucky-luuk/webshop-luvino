@@ -1,0 +1,168 @@
+@import "src/styles";
+
+.home-top{
+  height: 60vh;
+  background: url("../../assets/image/dark-bottel.jpg") no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #ffffff;
+  gap: 1.5em;
+  .content{
+    width: 80%;
+    display: flex;
+    gap: 2em;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    button{
+      @include button();
+      padding: 20px 15px;
+      background-color: $red;
+      color: white;
+      width: 150px;
+      font-size: 15px;
+      &:hover{
+        background-color: $light-red;
+      }
+    }
+    h1, h3{
+      //font-family: $font;
+      font-weight: 500;
+    }
+    h1{
+      font-size: 60px;
+    }
+  }
+}
+.home-middle{
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 8%;
+  margin-bottom: 8%;
+  gap: 2em;
+  max-width: 900px;
+  .selection-col{
+    background-color: #E2DEDE;
+    display: flex;
+    padding: 20px;
+    gap: 1.3em;
+    min-width: 350px;
+    .text{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+    }
+    .image{
+      img{
+        max-height: 400px;
+      }
+    }
+  }
+}
+.product-selection{
+  background-color: #D3AE94;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 3em;
+  height: 500px;
+  .products{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    min-height: 200px;
+    gap: 1em;
+    .product{
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      gap: 1em;
+      align-items: center;
+      width: 40%;
+      background-color: white;
+      .image{
+        align-items: center;
+        padding: 20px;
+        img{
+          max-height: 350px;
+        }
+      }
+      .bottom-text{
+        background-color: #E2DEDE;
+        width: 100%;
+        .text{
+          padding: 3%;
+        }
+      }
+    }
+  }
+}
+footer{
+  margin: 0;
+  left:0px;
+  bottom:0px;
+  align-items: center;
+  z-index:1;
+  width:100%;
+  background-color: $gray ;
+  color: $red;
+  padding: 35px;
+  h3{
+    margin: 0;
+  }
+}
+@media (max-width: 700px) {
+  .product-selection{
+    .products{
+      .product{
+        img{
+          padding-right: 200px;
+          max-height: 300px !important;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 900px) {
+  .product-selection{
+    margin: 0 !important;
+    padding: 0;
+    min-height: 400px;
+    .products{
+      gap: 5em;
+      overflow: auto;
+      position: relative;
+      .product{
+        img{
+          position: relative;
+          padding: 0 !important;
+          max-height: 250px !important;
+        }
+      }
+    }
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .middle-right{
+    img{
+
+    }
+  }
+}
+@keyframes wipe-enter {
+  0% {
+    transform: scale(0, .025);
+  }
+  50% {
+    transform: scale(1, .025);
+  }
+}

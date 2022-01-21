@@ -1,0 +1,54 @@
+@import "src/styles";
+.user-details{
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  .change-user, form {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    .input-text {
+      width: 100%;
+      padding: 10px;
+      background-color: #fafafa;
+      border:0;
+      box-shadow:0 0 4px rgba(0,0,0,0.3);
+      transition: .3s box-shadow;
+    }
+    .input-text.ng-invalid.ng-touched,
+    textarea.ng-invalid.ng-touched{
+      border: 2px solid red;
+    }
+    .details-name, {
+      display: flex;
+      gap: 1.5em;
+      .row{
+        display: flex;
+        flex-direction: column;
+      }
+      .middel{
+        width: 30%;
+      }
+    }
+    .details-adres, .details-account{
+      display: flex;
+      flex-direction: column;
+      gap: 1.3em;
+      .col-street{
+        display: flex;
+        gap: 1.5em;
+      }
+    }
+    .update{
+      display: flex;
+      justify-content: center;
+      button{
+        @include button();
+        font-size: 15px;
+      }
+    }
+
+
+  }
+
+}
