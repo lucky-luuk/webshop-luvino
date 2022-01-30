@@ -3,7 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserDetails} from "../../models/user-details.model";
 import {AuthService} from "../../auth/auth.service";
 import {HttpClient} from "@angular/common/http";
-import {environment} from "../../../environments/environment.prod";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-settings',
@@ -11,11 +11,11 @@ import {environment} from "../../../environments/environment.prod";
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
-  id: string = '';
-  userForm!: FormGroup;
-  delete: boolean = false
-  user!: UserDetails;
-  baseUrl = environment.baseUrl;
+  private id: string = '';
+  private userForm!: FormGroup;
+  private delete: boolean = false
+  private user!: UserDetails;
+  private baseUrl = environment.baseUrl;
 
   formDetails = {
     firstname: '',
@@ -37,15 +37,7 @@ export class SettingsComponent implements OnInit {
     this.initForm();
   }
 
-  private initForm() {
-    // this.formDetails.firstname = this.user.firstname;
-    // this.formDetails.middelname = this.user
-    // this.formDetails.lastname = this.user
-    // this.formDetails.country = this.user
-    // this.formDetails.streetname = this.user
-    // this.formDetails.streetnumber =
-    // this.formDetails.postalcode =
-    // this.formDetails.city =
+  private initForm(): void {
     let middel = '';
 
     this.userForm = new FormGroup({
@@ -62,7 +54,7 @@ export class SettingsComponent implements OnInit {
     })
   }
 
-  submitUser() {
+  submitUser(): void{
     const email = this.userForm.value.email;
     const firstname = this.userForm.value.firstname;
     const lastname = this.userForm.value.lastname;

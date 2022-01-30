@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Product} from "../models/product.model";
 import {CartModel} from "../models/cart.model";
-import {Subject} from "rxjs";
+import {Subject, Subscription} from "rxjs";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {AuthService} from "../auth/auth.service";
@@ -10,14 +10,14 @@ import {AuthService} from "../auth/auth.service";
   providedIn: 'root'
 })
 export class CartService {
-  items: CartModel[] = [];
-  itemChanged = new Subject<CartModel[]>();
+  private items: CartModel[] = [];
+  public itemChanged = new Subject<CartModel[]>();
   private env = environment;
 
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  addToCart(productItem: Product) {
+  addToCart(productItem: Product): void {
     const productExist = this.items
       .find(({product}) => product.name === productItem.name);
     if(!productExist) {
@@ -33,16 +33,16 @@ export class CartService {
     this.addLocalCart();
   }
 
-  getItems() {
+  getItems(): CartModel[]{
     return this.items;
   }
 
-  setItem(cartItem: CartModel[]) {
+  setItem(cartItem: CartModel[]): void{
     this.items = cartItem;
     this.itemChanged.next(this.items.slice());
   }
 
-  deleteItemFromCart(removeItem: CartModel) {
+  deleteItemFromCart(removeItem: CartModel): void{
     for (let i = this.items.length-1; i >= 0; i--) {
       const cartItem = this.items[i]
       if ( cartItem.product.id === removeItem.product.id) {
@@ -55,13 +55,13 @@ export class CartService {
   }
 
 
-  clearCart() {
+  clearCart(): void{
     this.items = [];
     this.itemChanged.next(this.items.slice());
     localStorage.removeItem('cart');
   }
 
-  getTotalPrice() {
+  getTotalPrice(): number {
     let totalprice = 0;
     for (let item of this.items) {
       totalprice += item.amount * item.product.price
@@ -69,7 +69,7 @@ export class CartService {
     return totalprice
   }
 
-  checkOut() {
+  checkOut(): Subscription {
     let itemObjects: Object[] = [];
     const user = this.authService.getUser();
     for (let i = 0; i < this.getItems().length; i++) {
@@ -90,14 +90,14 @@ export class CartService {
       });
   }
 
-  addLocalCart() {
+  addLocalCart(): void{
     if (this.items.length < 1) {
       this.clearCart();
     }
     localStorage.setItem('cart', JSON.stringify(this.items));
   }
 
-  setLocalCart() {
+  setLocalCart(): void {
     const localCart: CartModel[] = JSON.parse(localStorage.getItem('cart')!)
     if (localCart) {
       this.items = localCart;

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Subscription} from "rxjs";
 import {AuthService} from "../auth/auth.service";
-import {Role} from "../models/role.model";
 import {UserDetails} from "../models/user-details.model";
 
 @Component({
@@ -11,8 +10,8 @@ import {UserDetails} from "../models/user-details.model";
 })
 export class AccountComponent implements OnInit {
   private userSub: Subscription;
-  userDetails!: UserDetails;
-  user: boolean = false;
+  private userDetails!: UserDetails;
+  private user: boolean = false;
 
   constructor(private auth: AuthService) {
     this.userSub = new Subscription();

@@ -72,7 +72,7 @@ export class AuthService {
     }))
   }
 
-  autoLogin() {
+  public autoLogin() {
     const userData: UserDetails = JSON.parse(localStorage.getItem('userData')!);
     if (!userData) {
       return;
