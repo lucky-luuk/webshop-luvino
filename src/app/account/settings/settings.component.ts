@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {UserDetails} from "../../models/user-details.model";
+import {UserDetails} from "../../shared/models/user-details.model";
 import {AuthService} from "../../auth/auth.service";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
@@ -12,7 +12,7 @@ import {environment} from "../../../environments/environment";
 })
 export class SettingsComponent implements OnInit {
   private id: string = '';
-  private userForm!: FormGroup;
+  public userForm!: FormGroup;
   private delete: boolean = false
   private user!: UserDetails;
   private baseUrl = environment.baseUrl;

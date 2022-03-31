@@ -1,4 +1,4 @@
-<div class="alert" [ngClass]="{'hidden' : !addMessage}" >
+<div [@openClose]="addMessage ? 'open' : 'closed'" class="alert" >
   <h3>Het product is toegevoegd</h3>
 </div>
 <div class="products">
@@ -67,7 +67,7 @@
       <div class="card-info" >
         <h2>{{product.name}}</h2>
         <p>&euro; {{product.price}}</p>
-        <button (click)="addItemToCart(product)" > Bestel <i-feather name="shopping-cart"></i-feather></button>
+        <button (click)="addItemToCart(product)" > Bestel</button>
       </div>
     </div>
 

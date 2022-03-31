@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
-import {Product} from "../../models/product.model";
-import {ProductService} from "../../service/product.service";
+import {Product} from "../../shared/models/product.model";
+import {ProductService} from "../../shared/service/product.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {environment} from "../../../environments/environment";
 

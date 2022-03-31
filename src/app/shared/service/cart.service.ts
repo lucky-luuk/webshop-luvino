@@ -3,8 +3,8 @@ import {Product} from "../models/product.model";
 import {CartModel} from "../models/cart.model";
 import {Subject, Subscription} from "rxjs";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
-import {environment} from "../../environments/environment";
-import {AuthService} from "../auth/auth.service";
+import {environment} from "../../../environments/environment";
+import {AuthService} from "../../auth/auth.service";
 
 @Injectable({
   providedIn: 'root'

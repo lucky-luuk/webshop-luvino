@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://api.luukbartels.nl:8443/api',
+  // baseUrl: 'https://api.luukbartels.nl:8443/api',
+  baseUrl: 'http://localhost:8080/api',
   imageUrl: 'https://api.luukbartels.nl:8443/downloadFile/'
 };
 

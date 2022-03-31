@@ -1,8 +1,8 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
-import {CartModel} from "../../models/cart.model";
-import {CartService} from "../../service/cart.service";
+import {CartModel} from "../../shared/models/cart.model";
+import {CartService} from "../../shared/service/cart.service";
 import {Subscription} from "rxjs";
-import {UserDetails} from "../../models/user-details.model";
+import {UserDetails} from "../../shared/models/user-details.model";
 import {AuthService} from "../../auth/auth.service";
 import {Router} from "@angular/router";
 

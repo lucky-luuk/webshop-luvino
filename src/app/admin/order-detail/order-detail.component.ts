@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
-import {Order} from "../../models/order.model";
-import {OrderService} from "../../service/order.service";
-import {CartModel} from "../../models/cart.model";
+import {Order} from "../../shared/models/order.model";
+import {OrderService} from "../../shared/service/order.service";
+import {CartModel} from "../../shared/models/cart.model";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Location} from "@angular/common";
 

@@ -19,8 +19,6 @@ export class LoginService {
       .subscribe(data => {
         console.log(data)
         // this.auth.setUser();
-      }, error => {
-
-    })
+      })
   }
 }

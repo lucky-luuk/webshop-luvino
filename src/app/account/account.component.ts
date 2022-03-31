@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Subscription} from "rxjs";
 import {AuthService} from "../auth/auth.service";
-import {UserDetails} from "../models/user-details.model";
+import {UserDetails} from "../shared/models/user-details.model";
 
 @Component({
   selector: 'app-account',
@@ -11,7 +11,7 @@ import {UserDetails} from "../models/user-details.model";
 export class AccountComponent implements OnInit {
   private userSub: Subscription;
   private userDetails!: UserDetails;
-  private user: boolean = false;
+  public user: boolean = false;
 
   constructor(private auth: AuthService) {
     this.userSub = new Subscription();

@@ -9,9 +9,10 @@ import {AuthService} from "../auth/auth.service";
   templateUrl: './main-nav.component.html',
   styleUrls: ['./main-nav.component.scss']
 })
-export class MainNavComponent implements OnInit{
+export class MainNavComponent {
 
-  constructor(private breakpointObserver: BreakpointObserver, private auth: AuthService) {
+  constructor(private breakpointObserver: BreakpointObserver,
+              private auth: AuthService) {
 
   }
 
@@ -21,18 +22,16 @@ export class MainNavComponent implements OnInit{
       shareReplay()
     );
 
-  ngOnInit() {
-  }
 
-  userIsAdmin() {
+  userIsAdmin(): boolean {
     return this.auth.isAdmin;
   }
 
-  isLoggedIn() {
+  isLoggedIn(): boolean {
     return this.auth.isAuthorised();
   }
 
-  logout() {
+  logout(): void {
     this.auth.logout();
   }
 }

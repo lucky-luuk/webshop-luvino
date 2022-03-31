@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import {catchError, tap} from "rxjs/operators";
-import {BehaviorSubject, throwError} from "rxjs";
-import {UserDetails} from "../models/user-details.model";
-import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
+import {tap} from "rxjs/operators";
+import {BehaviorSubject, Observable} from "rxjs";
+import {UserDetails} from "../shared/models/user-details.model";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {Role} from "../models/role.model";
+import {Role} from "../shared/models/role.model";
 import {Md5} from "ts-md5";
 import {environment} from "../../environments/environment";
 
@@ -12,18 +12,18 @@ import {environment} from "../../environments/environment";
   providedIn: 'root'
 })
 export class AuthService {
-  userToken:  BehaviorSubject<UserDetails | null>;
-  user!: UserDetails;
+  public userToken:  BehaviorSubject<UserDetails | null>;
+  public user!: UserDetails;
   private env = environment;
-  isLoggedIn: boolean = false;
-  isAdmin: boolean = false;
+  private isLoggedIn: boolean = false;
+  public isAdmin: boolean = false;
   private tokenExpirationTime: number = 0;
 
   constructor(private http: HttpClient, private router: Router) {
     this.userToken = new BehaviorSubject<UserDetails | null>(null);
   }
 
-  login(email: any, password: any) {
+  public login(email: any, password: any): Observable<UserDetails> {
     const save: string = Md5.hashStr(password);
     let body = new URLSearchParams();
     body.set('email', email);
@@ -32,13 +32,12 @@ export class AuthService {
       {
         headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
       })
-      .pipe(catchError(this.handleError),
-        tap((resData: UserDetails) => {
+      .pipe(tap((resData: UserDetails) => {
         this.handelLogin(resData);
-      }))
+      }));
   }
 
-  logout() {
+  public logout(): void {
     this.isLoggedIn = false;
     this.isAdmin = false;
     this.userToken.next(null);
@@ -49,15 +48,15 @@ export class AuthService {
     this.router.navigate(['/home']);
   }
 
-  isAuthorised() {
+  public isAuthorised(): boolean {
     return this.isLoggedIn;
   }
 
-  getUser() {
+  public getUser(): UserDetails {
     return this.user;
   }
 
-  register(firstname: any, lastname: any, email: any, password: any, address: any) {
+  public register(firstname: any, lastname: any, email: any, password: any, address: any) {
     let save: string = Md5.hashStr(password);
     return this.http.post<UserDetails>(this.env.baseUrl + '/user/save',
       {
@@ -67,9 +66,7 @@ export class AuthService {
         'password': save,
         'address': address
       }
-    ).pipe(catchError(this.handleError),tap(resData => {
-      console.log(resData)
-    }))
+    )
   }
 
   public autoLogin() {
@@ -80,7 +77,7 @@ export class AuthService {
     this.handelLogin(userData);
   }
 
-  autoLogout() {
+  private autoLogout(): void {
     const expirationData = +new Date().getMilliseconds() + 10 * 60 * 1000;
     this.tokenExpirationTime = setTimeout(() => {
       this.logout();
@@ -88,7 +85,7 @@ export class AuthService {
   }
 
 
-  handelLogin(data: any) {
+  private handelLogin(data: any): void {
     this.user = data as UserDetails;
     this.userToken.next(this.user);
     this.checkAdmin(data.roles)
@@ -97,26 +94,10 @@ export class AuthService {
     localStorage.setItem('userData', JSON.stringify(this.user))
   }
 
-  checkAdmin(roles: Role[]) {
+  private checkAdmin(roles: Role[]): void {
     for (let role of roles) {
       this.isAdmin = role.name === 'ADMIN';
     }
-  }
-
-  private handleError(errorRes: HttpErrorResponse) {
-    let errorMessage = 'An unknown error occured!';
-    if (!errorRes.error || !errorRes.error.error) {
-      return throwError(errorMessage);
-    }
-    switch (errorRes.error.error.message) {
-      case 'EMAIL_EXISTS':
-        errorMessage = 'This email exists already';
-        break;
-      case 'EMAIL_NOT_FOUND':
-        errorMessage = 'This email doesnt exist.';
-        break;
-    }
-    return throwError(errorMessage);
   }
 
 }

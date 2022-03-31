@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {UserInf} from "../../models/userInf.model";
+import {HttpClient} from "@angular/common/http";
+import {UserInf} from "../../shared/models/userInf.model";
 import {AuthService} from "../../auth/auth.service";
 
 @Component({
@@ -11,13 +11,15 @@ import {AuthService} from "../../auth/auth.service";
   styleUrls: ['./register.component.scss', '../login-style.scss']
 })
 export class RegisterComponent implements OnInit {
-  registerForm: FormGroup;
-  newUser: UserInf
+  registerForm!: FormGroup;
 
   constructor(private router: Router,
               private http: HttpClient,
               private auth: AuthService) {
-    this.newUser = new UserInf();
+
+  }
+
+  ngOnInit(): void {
     this.registerForm = new FormGroup({
         'email': new FormControl(null),
         'password': new FormControl(null, [Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'), Validators.minLength(6)]),
@@ -32,7 +34,7 @@ export class RegisterComponent implements OnInit {
     )
   }
 
-  onSubmit() {
+  onSubmit(): void {
     const email = this.registerForm.value.email;
     const firstname = this.registerForm.value.firstname;
     const lastname = this.registerForm.value.lastname;
@@ -53,13 +55,6 @@ export class RegisterComponent implements OnInit {
         }
       );
 
-  }
-
-  ngOnInit(): void {
-  }
-
-  registreer() {
-    // this.router.navigate(['/home'])
   }
 
 }

@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output} from '@angular/core';
-import {CartModel} from "../../models/cart.model";
-import {Product} from "../../models/product.model";
-import {CartService} from "../../service/cart.service";
+import {CartModel} from "../../shared/models/cart.model";
+import {Product} from "../../shared/models/product.model";
+import {CartService} from "../../shared/service/cart.service";
 import {Observer, Subject} from "rxjs";
 import {environment} from "../../../environments/environment";
 

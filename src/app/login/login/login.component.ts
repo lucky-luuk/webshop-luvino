@@ -10,7 +10,7 @@ import {Location} from "@angular/common";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss', '../login-style.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   error: boolean = false;
 
   constructor(private router: Router,
@@ -19,15 +19,15 @@ export class LoginComponent implements OnInit {
               private route: ActivatedRoute,
               private location: Location) { }
 
-  ngOnInit(): void { }
 
-  onSubmit(form: NgForm) {
-    console.log(form.value.email);
+  onSubmit(form: NgForm): void {
     this.auth.login(form.value.email, form.value.password)
-      .subscribe(data => {
-        this.location.back()
-      }, error => {
-        this.error = true;
+      .subscribe( resData => {
+        if (resData) {
+          this.location.back()
+        } else {
+          this.error = true;
+        }
       })
   }
 

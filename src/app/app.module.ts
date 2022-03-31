@@ -4,10 +4,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
-import { ProductComponent } from './product/product.component';
+import { ProductComponent } from './home/product/product.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {TokenInterceptorService} from "./auth/token-interceptor.service";
-import {IconsModule} from "./icons/icons.module";
 import {LoginModule} from "./login/login.module";
 import {CartModule} from "./cart/cart.module";
 import {AdminModule} from "./admin/admin.module";
@@ -28,7 +27,6 @@ import {PopupModule} from "./popup/popup.module";
     ReactiveFormsModule,
     AppRoutingModule,
     NavModule,
-    IconsModule,
     LoginModule,
     CartModule,
     AdminModule,

@@ -1,22 +1,38 @@
 import {Component, OnInit} from '@angular/core';
-import {Product} from "../models/product.model";
+import {Product} from "../../shared/models/product.model";
 import {HttpClient} from "@angular/common/http";
-import {ProductService} from "../service/product.service";
+import {ProductService} from "../../shared/service/product.service";
 import {FormControl} from "@angular/forms";
-import {environment} from "../../environments/environment";
+import {environment} from "../../../environments/environment";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  styleUrls: ['./product.component.scss'],
+  animations: [
+    trigger('openClose', [
+      state('open', style({
+        opacity:1
+      })),
+      state('closed', style({
+        opacity:0
+      })),
+      transition('closed => open', [
+        animate('0.5s')
+        ]
+      )
+    ])
+  ]
 })
 export class ProductComponent implements OnInit {
-  products: Product[] = [];
-  filterProdcut: Product[] = [];
-  catogory = new FormControl('');
-  imageUrl = environment.imageUrl;
-  addMessage = false;
-  interval = 0;
+  public products: Product[] = [];
+  private filterProdcut: Product[] = [];
+  public catogory = new FormControl('');
+  public imageUrl = environment.imageUrl;
+  public addMessage = false;
+  private interval = 0;
+
   constructor(private http: HttpClient, private productService: ProductService) {
   }
 
@@ -27,7 +43,7 @@ export class ProductComponent implements OnInit {
       });
   }
 
-  isChecked(catogory: any) {
+  public isChecked(catogory: any): void {
     const catValue = catogory.target.value.toString();
     if (catogory.target.checked) {
       for (let product of this.products) {
@@ -43,7 +59,8 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  addItemToCart(product: Product) {
+
+  public addItemToCart(product: Product): void {
     this.productService.productToCart(product);
     this.addMessage = true;
     this.interval = setTimeout(() => {
@@ -51,7 +68,7 @@ export class ProductComponent implements OnInit {
     }, 10000)
   }
 
-  removeMessage() {
+  private removeMessage(): void {
     this.addMessage = false;
   }
 
